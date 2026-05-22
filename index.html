@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Java面试自我介绍生成器 — 30秒出稿·实习面试专用</title>
+<meta name="description" content="免费Java实习生面试自我介绍生成器。输入学校+项目+技能，秒得1分钟标准自我介绍。覆盖2026面试套路，含STAR法则模板。">
+<meta name="keywords" content="Java面试自我介绍,面试自我介绍模板,实习生面试,2026面试,自我介绍生成器">
+<link rel="canonical" href="https://Abyte-zym.github.io/java-intro-generator/">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f0f4f8;color:#2c3e50;line-height:1.8}
+header{background:linear-gradient(135deg,#8e44ad,#3498db);color:#fff;padding:40px 20px;text-align:center}
+header h1{font-size:1.8em;margin-bottom:8px}
+header p{opacity:.9;font-size:1em}
+.container{max-width:700px;margin:0 auto;padding:20px}
+.card{background:#fff;border-radius:12px;padding:25px;margin:15px 0;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+label{display:block;font-weight:600;margin:12px 0 5px;color:#2c3e50}
+input,select,textarea{width:100%;padding:10px;border:2px solid #dce4ec;border-radius:8px;font-size:.95em;transition:border .2s}
+input:focus,select:focus,textarea:focus{border-color:#3498db;outline:none}
+textarea{height:80px;resize:vertical}
+.btn{display:block;width:100%;padding:14px;background:linear-gradient(135deg,#8e44ad,#3498db);color:#fff;border:none;border-radius:10px;font-size:1.1em;font-weight:bold;cursor:pointer;margin:20px 0;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(142,68,173,.3)}
+.result{background:#2c3e50;color:#ecf0f1;padding:20px;border-radius:10px;font-size:.95em;line-height:2;white-space:pre-wrap;display:none;margin:15px 0}
+.result.show{display:block}
+.copy-btn{background:#27ae60;color:#fff;border:none;padding:8px 20px;border-radius:6px;cursor:pointer;font-size:.9em;float:right;margin:5px}
+.copy-btn:hover{background:#219a52}
+.donate{text-align:center;background:linear-gradient(135deg,#fff5f5,#ffe0e0);padding:25px;border-radius:12px;margin:20px 0;border:2px dashed #e74c3c}
+.donate img{width:160px;border-radius:10px}
+.tip{background:#eaf7ee;border-left:4px solid #27ae60;padding:10px 15px;border-radius:4px;margin:10px 0;font-size:.85em}
+nav{text-align:center;padding:10px}
+nav a{color:#3498db;text-decoration:none;margin:0 10px;font-size:.9em}
+footer{text-align:center;padding:30px;color:#7f8c8d;font-size:.85em}
+.quick-fill{display:flex;gap:10px;flex-wrap:wrap;margin:5px 0}
+.quick-fill button{background:#eef2f7;border:1px solid #dce4ec;padding:6px 12px;border-radius:15px;font-size:.8em;cursor:pointer;white-space:nowrap}
+.quick-fill button:hover{background:#3498db;color:#fff;border-color:#3498db}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🎤 Java面试自我介绍生成器</h1>
+<p>填信息 → 秒得1分钟标准自我介绍 → 面试第一印象直接拉满</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>📋 填你的信息（快速填写）</h2>
+
+<div class="quick-fill">
+<button onclick="fillDemo('双非')">双非院校示例</button>
+<button onclick="fillDemo('211')">211院校示例</button>
+<button onclick="fillDemo('有实习')">有实习经历</button>
+<button onclick="fillDemo('应届')">纯应届生</button>
+</div>
+
+<label>🏫 学校 + 专业</label>
+<input id="school" placeholder="例如：长春理工大学 软件工程">
+
+<label>🎯 应聘岗位</label>
+<input id="position" value="Java后端开发实习生" placeholder="Java后端开发实习生">
+
+<label>🛠 核心技术栈（逗号分隔）</label>
+<input id="skills" value="Spring Boot, MyBatis, MySQL, Redis, Docker" placeholder="Spring Boot, MySQL, Redis...">
+
+<label>🚀 项目亮点（一句话）</label>
+<input id="project" value="独立完成微服务秒杀系统和RAG智能知识库，QPS 5000+" placeholder="独立完成XX项目，解决XX问题">
+
+<label>🏆 竞赛/亮点（可选）</label>
+<input id="awards" value="AIGC全国三等奖，数学建模省一等奖" placeholder="AIGC竞赛全国三等奖...">
+
+<label>📅 到岗时间</label>
+<input id="available" value="6月底可到岗" placeholder="6月底可到岗">
+
+<button class="btn" onclick="generate()">✨ 生成自我介绍</button>
+</div>
+
+<div class="result" id="result"></div>
+
+<div class="card" id="outputCard" style="display:none">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<h2>✅ 你的1分钟自我介绍</h2>
+<button class="copy-btn" onclick="copyResult()">📋 一键复制</button>
+</div>
+<div id="output" style="white-space:pre-wrap;line-height:2;background:#f8f9fa;padding:15px;border-radius:8px;font-size:.95em"></div>
+
+<div class="tip">
+💡 <strong>面试技巧：</strong>自我介绍控制在60-90秒。第一句定调（学校+岗位），第二段讲技术栈，第三段讲项目亮点，最后收尾表达意愿。眼神交流+适当停顿。
+</div>
+</div>
+
+<div class="donate">
+<p style="font-size:1.1em;font-weight:bold">这个工具帮你省了准备时间 →</p>
+<img src="https://Abyte-zym.github.io/java-career-blog/donate-qr.png" alt="赞赏码" onerror="this.style.display='none'">
+<p>☕ 请杯咖啡，持续更新面试干货</p>
+</div>
+
+<nav>
+<strong>🧰 更多免费工具：</strong><br>
+<a href="https://Abyte-zym.github.io/java-resume-builder/">📝 简历生成器</a> |
+<a href="https://Abyte-zym.github.io/java-interview-quiz/">☕ 面试题库</a> |
+<a href="https://Abyte-zym.github.io/java-career-blog/">📚 技术博客</a> |
+<a href="https://Abyte-zym.github.io/java-career-blog/portfolio.html">💼 接单主页</a>
+</nav>
+
+</div>
+
+<footer>
+<p>© 2026 Java面试速通 | 所有工具免费使用 | <a href="https://github.com/Abyte-zym">GitHub</a></p>
+</footer>
+
+<script>
+const demos = {
+'双非':{school:'长春理工大学 软件工程',skills:'Spring Boot, MyBatis, MySQL, Redis, Docker',project:'独立完成微服务秒杀系统和RAG智能知识库',awards:'AIGC全国三等奖，数学建模省一等奖'},
+'211':{school:'XX大学 计算机科学与技术',skills:'Spring Cloud Alibaba, Nacos, Sentinel, RocketMQ, MySQL',project:'参与分布式电商系统后端开发，负责订单模块',awards:'蓝桥杯省级二等奖，校级优秀学生'},
+'有实习':{school:'XX大学 软件工程',skills:'Java, Spring Boot, MyBatis, Redis, MySQL, Linux',project:'在XX公司实习期间独立完成数据中台接口开发',awards:'校奖学金，CET-6'},
+'应届':{school:'XX大学 计算机科学与技术',skills:'Java, Spring Boot, MySQL, Redis, Git',project:'完成校园二手交易平台，日活200+',awards:'课程设计优秀项目'}
+};
+
+function fillDemo(type){
+    const d=demos[type];
+    document.getElementById('school').value=d.school;
+    document.getElementById('skills').value=d.skills;
+    document.getElementById('project').value=d.project;
+    document.getElementById('awards').value=d.awards;
+}
+
+function generate(){
+    const s=document.getElementById('school').value||'XX大学 软件工程';
+    const p=document.getElementById('position').value||'Java后端开发实习生';
+    const sk=document.getElementById('skills').value||'Java, Spring Boot, MySQL, Redis';
+    const pr=document.getElementById('project').value||'独立完成多个后端开发项目';
+    const aw=document.getElementById('awards').value;
+    const av=document.getElementById('available').value||'可尽快到岗';
+
+    const intro=`面试官您好，我叫[姓名]，来自${s}，应聘${p}。
+
+我的技术栈包括${sk}，对Java后端开发有系统学习和项目实践。
+
+项目方面，${pr}。${aw?`\n竞赛方面，获得${aw}，锻炼了我的问题解决和团队协作能力。`:''}
+
+${av}，非常期待有机会加入贵团队，在实践中快速成长。谢谢！`;
+
+    document.getElementById('output').textContent=intro;
+    document.getElementById('outputCard').style.display='block';
+    document.getElementById('outputCard').scrollIntoView({behavior:'smooth'});
+}
+
+function copyResult(){
+    const text=document.getElementById('output').textContent;
+    navigator.clipboard.writeText(text).then(()=>{
+        const btn=document.querySelector('.copy-btn');
+        btn.textContent='✅ 已复制！';
+        setTimeout(()=>btn.textContent='📋 一键复制',2000);
+    });
+}
+</script>
+</body>
+</html>
