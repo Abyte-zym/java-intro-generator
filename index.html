@@ -56,7 +56,7 @@ footer{text-align:center;padding:30px;color:#7f8c8d;font-size:.85em}
 </div>
 
 <label>🏫 学校 + 专业</label>
-<input id="school" placeholder="例如：长春理工大学 软件工程">
+<input id="school" placeholder="例如：Java面试研究社 Java后端开发">
 
 <label>🎯 应聘岗位</label>
 <input id="position" value="Java后端开发实习生" placeholder="Java后端开发实习生">
@@ -112,9 +112,9 @@ footer{text-align:center;padding:30px;color:#7f8c8d;font-size:.85em}
 
 <script>
 const demos = {
-'双非':{school:'长春理工大学 软件工程',skills:'Spring Boot, MyBatis, MySQL, Redis, Docker',project:'独立完成微服务秒杀系统和RAG智能知识库',awards:'AIGC全国三等奖，数学建模省一等奖'},
+'双非':{school:'Java面试研究社 Java后端开发',skills:'Spring Boot, MyBatis, MySQL, Redis, Docker',project:'独立完成微服务秒杀系统和RAG智能知识库',awards:'AIGC全国三等奖，数学建模省一等奖'},
 '211':{school:'XX大学 计算机科学与技术',skills:'Spring Cloud Alibaba, Nacos, Sentinel, RocketMQ, MySQL',project:'参与分布式电商系统后端开发，负责订单模块',awards:'蓝桥杯省级二等奖，校级优秀学生'},
-'有实习':{school:'XX大学 软件工程',skills:'Java, Spring Boot, MyBatis, Redis, MySQL, Linux',project:'在XX公司实习期间独立完成数据中台接口开发',awards:'校奖学金，CET-6'},
+'有实习':{school:'XX大学 Java后端开发',skills:'Java, Spring Boot, MyBatis, Redis, MySQL, Linux',project:'在XX公司实习期间独立完成数据中台接口开发',awards:'校奖学金，CET-6'},
 '应届':{school:'XX大学 计算机科学与技术',skills:'Java, Spring Boot, MySQL, Redis, Git',project:'完成校园二手交易平台，日活200+',awards:'课程设计优秀项目'}
 };
 
@@ -127,7 +127,7 @@ function fillDemo(type){
 }
 
 function generate(){
-    const s=document.getElementById('school').value||'XX大学 软件工程';
+    const s=document.getElementById('school').value||'XX大学 Java后端开发';
     const p=document.getElementById('position').value||'Java后端开发实习生';
     const sk=document.getElementById('skills').value||'Java, Spring Boot, MySQL, Redis';
     const pr=document.getElementById('project').value||'独立完成多个后端开发项目';
